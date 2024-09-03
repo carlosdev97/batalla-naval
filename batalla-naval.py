@@ -1,37 +1,83 @@
 import random
 
-tablero=[]
+tablero1=[]
+tablero2=[]
 
-def generar_tablero(): # Función para crear el tablero
+def generar_tablero1(): # Función para crear el tablero
     row, col=5, 5
     for _ in range(row): 
-        tablero.append(["~"] * col) 
+        tablero1.append(["~"] * col)
 
-def mostrar_tablero(): # Función para mostrar el tablero
-    for i in tablero: 
+def generar_tablero2(): # Función para crear el tablero 2
+    row, col=5, 5
+    for _ in range(row): 
+        tablero2.append(["~"] * col) 
+
+def mostrar_tablero1(): # Función para mostrar el tablero
+    print("Datos del tablero 1:")
+    print()
+    for i in tablero1: 
         print(i)
+    print()
+    print()
 
-def poner_barcos_jugador(jugador): # Función para poner los barcos del jugador
+def mostrar_tablero2(): # Función para mostrar el tablero 2
+    print("Datos del tablero 2:")
+    print()
+    for i in tablero2: 
+        print(i)
+    print()
+    print()
+
+def poner_barcos_jugador1(): # Función para poner los barcos del jugador 1
     cantidad_barcos=5
     for i in range(1, cantidad_barcos + 1): 
         while True: 
-            x, y = map(int, input(f"Por favor, jugador {jugador} ingrese las coordenadas X e Y del barco {i}, separadas por un espacio: ").split())
+            x, y = map(int, input(f"Por favor, jugador 1 ingrese las coordenadas X e Y del barco {i}, separadas por un espacio: ").split())
             if x < 5 and y < 5: 
-                if tablero[y][x] == "~": 
-                    tablero[y][x]=jugador 
+                if tablero1[y][x] == "~": 
+                    tablero1[y][x]=1 
                     break 
                 else:
                     print()
                     print("¡Ya se ha desplegado una unidad en esta posición!") 
                     print()
-                    mostrar_tablero()
+                    mostrar_tablero1()
                     print()
             else:
                 print()
                 print("¡La coordenada ingresada está por fuera del área!") 
                 print()
-                mostrar_tablero()
+                mostrar_tablero1()
                 print()
+    print("Así ha desplegado sus unidades JUGADOR 1:")
+    print()
+    mostrar_tablero1()
+
+def poner_barcos_jugador2(): # Función para poner los barcos del jugador 2
+    cantidad_barcos=5
+    for i in range(1, cantidad_barcos + 1): 
+        while True: 
+            x, y = map(int, input(f"Por favor, jugador 2 ingrese las coordenadas X e Y del barco {i}, separadas por un espacio: ").split())
+            if x < 5 and y < 5: 
+                if tablero2[y][x] == "~": 
+                    tablero2[y][x]=2 
+                    break 
+                else:
+                    print()
+                    print("¡Ya se ha desplegado una unidad en esta posición!") 
+                    print()
+                    mostrar_tablero2()
+                    print()
+            else:
+                print()
+                print("¡La coordenada ingresada está por fuera del área!") 
+                print()
+                mostrar_tablero2()
+                print()
+    print("Así ha desplegado sus unidades JUGADOR 2:")
+    print()
+    mostrar_tablero2()
 
 def poner_barcos_computadora(): # Función para poner los barcos de la computadora
     cantidad_barcos=5
@@ -40,8 +86,8 @@ def poner_barcos_computadora(): # Función para poner los barcos de la computado
             x=random.randint(0, 4)
             y=random.randint(0, 4)
             if x < 5 and y < 5:
-                if tablero[y][x] != "1" and tablero[y][x] != "2":
-                    tablero[y][x]="1"
+                if tablero2[y][x] != 2:
+                    tablero2[y][x]=2
                     break
 
 def juego_contra_computadora(): # Función para iniciar el juego contra la computadora
@@ -51,19 +97,21 @@ def juego_contra_computadora(): # Función para iniciar el juego contra la compu
     while True:
         unidades_jugador1=0
         unidades_jugador2=0
-        for area in tablero:
+        for area in tablero1:
             for barco in area:
-                if barco == "1":
+                if barco == 1:
                     unidades_jugador1+=1
-                elif barco == "2":
+        for area in tablero2:
+            for barco in area:
+                if barco == 2:
                     unidades_jugador2+=1
-
-        if unidades_jugador2 == 0:
+                
+        if unidades_jugador1 == 0:
             print("Haz PERDIDO, la computadora ha hundido todos tus barcos")
             print()
             break
-        elif unidades_jugador1 == 0:
-            print("FELICIDADES, ¡has ganado el juego!")
+        elif unidades_jugador2 == 0:
+            print("FELICIDADES, ¡Has ganado el juego!")
             print()
             break
         
@@ -72,15 +120,15 @@ def juego_contra_computadora(): # Función para iniciar el juego contra la compu
             x=random.randint(0, 4)
             y=random.randint(0, 4)
             if x < 5 and y < 5:
-                if tablero[y][x] == "2":
+                if tablero1[y][x] == 1:
                     print()
-                    print("¡La computadora ha ACERTADO en un objetivo!")
-                    unidades_jugador2-=1
-                    tablero[y][x]="~"
+                    print(f"¡La computadora ha elegido {x},{y} y ha ACERTADO en un objetivo!")
+                    unidades_jugador1-=1
+                    tablero1[y][x]="~"
                     break
                 else:
                     print()
-                    print("¡La computadora ha FALLADO!")
+                    print(f"¡La computadora ha elegido {x},{y} y ha FALLADO!")
                     break
             else:
                 print()
@@ -93,11 +141,11 @@ def juego_contra_computadora(): # Función para iniciar el juego contra la compu
             x, y = map(int, input(f"Por favor ingrese las coordenadas X e Y del objetivo, separadas por un espacio: ").split())
             print()
             if x < 5 and y < 5:
-                if tablero[y][x] == "1":
+                if tablero2[y][x] == 2:
                     print("¡Haz ACERTADO en un objetivo!")
                     print()
-                    unidades_jugador1-=1
-                    tablero[y][x]="~"
+                    unidades_jugador2-=1
+                    tablero2[y][x]="~"
                     break
                 else:
                     print("¡Haz FALLADO!")
@@ -107,7 +155,7 @@ def juego_contra_computadora(): # Función para iniciar el juego contra la compu
                 print("¡Las coordenadas ingresadas están por fuera del área!")
                 print()
 
-        print(f"Unidades Computadora: {unidades_jugador1} | Unidades Jugador: {unidades_jugador2}")
+        print(f"Unidades Jugador: {unidades_jugador1} | Unidades Computadora: {unidades_jugador2}")
         print()
 
 def juego_contra_jugador(): # Función para iniciar el juego contra otro jugador
@@ -117,11 +165,14 @@ def juego_contra_jugador(): # Función para iniciar el juego contra otro jugador
     while True:
         unidades_jugador1=0
         unidades_jugador2=0
-        for area in tablero:
+        
+        for area in tablero1:
             for barco in area:
-                if barco == "1":
+                if barco == 1:
                     unidades_jugador1+=1
-                elif barco == "2":
+        for area in tablero2:
+            for barco in area:
+                if barco == 2:
                     unidades_jugador2+=1
 
         if unidades_jugador2 == 0:
@@ -139,15 +190,15 @@ def juego_contra_jugador(): # Función para iniciar el juego contra otro jugador
         while True:
             x, y = map(int, input(f"Por favor ingrese las coordenadas X e Y del objetivo, separadas por un espacio: ").split())
             if x < 5 and y < 5:
-                if tablero[y][x] == "2":
+                if tablero2[y][x] == 2:
                     print()
                     print("¡Jugador 1 ha ACERTADO en un objetivo!")
                     unidades_jugador2-=1
-                    tablero[y][x]="~"
+                    tablero2[y][x]="~"
                     break
                 else:
                     print()
-                    print("¡Jugador 2 ha FALLADO!")
+                    print("¡Jugador 1 ha FALLADO!")
                     break
             else:
                 print()
@@ -160,11 +211,11 @@ def juego_contra_jugador(): # Función para iniciar el juego contra otro jugador
             x, y = map(int, input(f"Por favor ingrese las coordenadas X e Y del objetivo, separadas por un espacio: ").split())
             print()
             if x < 5 and y < 5:
-                if tablero[y][x] == "1":
+                if tablero1[y][x] == 1:
                     print("¡Jugador 2 ha ACERTADO en un objetivo!")
                     print()
                     unidades_jugador1-=1
-                    tablero[y][x]="~"
+                    tablero1[y][x]="~"
                     break
                 else:
                     print("¡Jugador 2 ha FALLADO!")
@@ -189,29 +240,33 @@ def menu_juego():
         if opcion == 1:
             print("¡Juego contra la computadora!")
             print()
-            generar_tablero()
-            mostrar_tablero()
+            generar_tablero1()
+            poner_barcos_jugador1()
             print()
-            poner_barcos_jugador("2")
+            generar_tablero2()
             poner_barcos_computadora()
             print()
             print("* * * Inicio del juego * * *")
             print()
             juego_contra_computadora()
-            mostrar_tablero()
+            mostrar_tablero1()
+            mostrar_tablero2()
         elif opcion == 2:
             print("¡Juego a dos jugadores!")
             print()
-            tablero.clear()
-            generar_tablero()
-            poner_barcos_jugador("1")
-            poner_barcos_jugador("2")
+            tablero1.clear()
+            tablero2.clear()
+            generar_tablero1()
+            generar_tablero2()
+            poner_barcos_jugador1()
+            poner_barcos_jugador2()
             print()
             print("* * * Inicio del juego * * *")
             print()
             juego_contra_jugador()
             print()
-            mostrar_tablero()
+            mostrar_tablero1()
+            mostrar_tablero2()
         elif opcion == 3:
             break
         else:
