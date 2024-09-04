@@ -36,7 +36,7 @@ def poner_barcos_jugador1(): # Función para poner los barcos del jugador 1
             x, y = map(int, input(f"Por favor, jugador 1 ingrese las coordenadas X e Y del barco {i}, separadas por un espacio: ").split())
             if x < 5 and y < 5: 
                 if tablero1[y][x] == "~": 
-                    tablero1[y][x]=1 
+                    tablero1[y][x]="1" 
                     break 
                 else:
                     print()
@@ -61,7 +61,7 @@ def poner_barcos_jugador2(): # Función para poner los barcos del jugador 2
             x, y = map(int, input(f"Por favor, jugador 2 ingrese las coordenadas X e Y del barco {i}, separadas por un espacio: ").split())
             if x < 5 and y < 5: 
                 if tablero2[y][x] == "~": 
-                    tablero2[y][x]=2 
+                    tablero2[y][x]="2" 
                     break 
                 else:
                     print()
@@ -86,8 +86,8 @@ def poner_barcos_computadora(): # Función para poner los barcos de la computado
             x=random.randint(0, 4)
             y=random.randint(0, 4)
             if x < 5 and y < 5:
-                if tablero2[y][x] != 2:
-                    tablero2[y][x]=2
+                if tablero2[y][x] != "2":
+                    tablero2[y][x]="2"
                     break
 
 def juego_contra_computadora(): # Función para iniciar el juego contra la computadora
@@ -99,11 +99,11 @@ def juego_contra_computadora(): # Función para iniciar el juego contra la compu
         unidades_jugador2=0
         for area in tablero1:
             for barco in area:
-                if barco == 1:
+                if barco == "1":
                     unidades_jugador1+=1
         for area in tablero2:
             for barco in area:
-                if barco == 2:
+                if barco == "2":
                     unidades_jugador2+=1
                 
         if unidades_jugador1 == 0:
@@ -120,7 +120,7 @@ def juego_contra_computadora(): # Función para iniciar el juego contra la compu
             x=random.randint(0, 4)
             y=random.randint(0, 4)
             if x < 5 and y < 5:
-                if tablero1[y][x] == 1:
+                if tablero1[y][x] == "1":
                     print()
                     print(f"¡La computadora ha elegido {x},{y} y ha ACERTADO en un objetivo!")
                     unidades_jugador1-=1
@@ -141,7 +141,7 @@ def juego_contra_computadora(): # Función para iniciar el juego contra la compu
             x, y = map(int, input(f"Por favor ingrese las coordenadas X e Y del objetivo, separadas por un espacio: ").split())
             print()
             if x < 5 and y < 5:
-                if tablero2[y][x] == 2:
+                if tablero2[y][x] == "2":
                     print("¡Haz ACERTADO en un objetivo!")
                     print()
                     unidades_jugador2-=1
@@ -168,11 +168,11 @@ def juego_contra_jugador(): # Función para iniciar el juego contra otro jugador
         
         for area in tablero1:
             for barco in area:
-                if barco == 1:
+                if barco == "1":
                     unidades_jugador1+=1
         for area in tablero2:
             for barco in area:
-                if barco == 2:
+                if barco == "2":
                     unidades_jugador2+=1
 
         if unidades_jugador2 == 0:
@@ -190,7 +190,7 @@ def juego_contra_jugador(): # Función para iniciar el juego contra otro jugador
         while True:
             x, y = map(int, input(f"Por favor ingrese las coordenadas X e Y del objetivo, separadas por un espacio: ").split())
             if x < 5 and y < 5:
-                if tablero2[y][x] == 2:
+                if tablero2[y][x] == "2":
                     print()
                     print("¡Jugador 1 ha ACERTADO en un objetivo!")
                     unidades_jugador2-=1
@@ -211,7 +211,7 @@ def juego_contra_jugador(): # Función para iniciar el juego contra otro jugador
             x, y = map(int, input(f"Por favor ingrese las coordenadas X e Y del objetivo, separadas por un espacio: ").split())
             print()
             if x < 5 and y < 5:
-                if tablero1[y][x] == 1:
+                if tablero1[y][x] == "1":
                     print("¡Jugador 2 ha ACERTADO en un objetivo!")
                     print()
                     unidades_jugador1-=1

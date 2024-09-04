@@ -1,14 +1,15 @@
 Batalla Naval
 
-Caracteristicas del juego: El tablero tiene unas dimensiones de (5 x 5), puedes jugar contra la máquina o con otro amigo, cada jugador tiene dos figuras las cuales ubicara en su tablero (submarino tamaño 2 y porta-aviones tamaño 3).
+Caracteristicas del juego: Los tableros de cada jugador tiene unas dimensiones de (5 x 5), puedes jugar contra la máquina o con otro jugador en la misma máquina, cada jugador debe ubicar 5 barcos en el area del tablero.
 
-Reglas basicas del juego 
-- Se puede ubicar las dos naves en cualquier parte del tablero siempre y cuando no se salga de las dimensiones.
-- No se puede poner sobreponer una figura a la otra.
-- Ganara el jugador que derribe las dos naves del enemigo.
-- En cada turno el jugador seleccionara una fila y columna la cual desea atacar con el objetivo de derribar una embarcación enemiga.
-- El jugador que comienze el ataque al terminarlo, el sistema darla el turno al rival.
-- No hay opción de empate ganara el primer en derribar las naves del oponente.
+Reglas basicas del juego:
+- Se pueden ubicar los barcos en cualquier parte del tablero siempre y cuando no se salga de las dimensiones.
+- No se puede sobreponer una figura a la otra.
+- Ganará el jugador que derribe todos los barcos del enemigo.
+- En cada turno el jugador seleccionará una fila y una columna, la cual desea atacar con el objetivo de derribar una embarcación enemiga.
+- El jugador que comienze el ataque al terminarlo, el sistema dará el turno al rival.
+- No hay opción de empate, ganará el primer en derribar las naves del oponente.
+- La computadora ubicará sus barcos de forma aleatoria, al igual que serán sus disparos en cada turno.
 
 
 
