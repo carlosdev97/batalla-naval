@@ -10,7 +10,3 @@ Reglas basicas del juego:
 - El jugador que comienze el ataque al terminarlo, el sistema dará el turno al rival.
 - No hay opción de empate, ganará el primer en derribar las naves del oponente.
 - La computadora ubicará sus barcos de forma aleatoria, al igual que serán sus disparos en cada turno.
-
-
-
-
