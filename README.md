@@ -1,6 +1,6 @@
 Batalla Naval
 
-Caracteristicas del juego: El tablero tiene unas dimensiones de (5 x 5), puedes jugar contra la máquina o con otro amigo, cada jugador tiene dos figuras las cuales ubicara en su tablero (submarino tamaño 2 y porta-aviones tamaño 3).
+Caracteristicas del juego: El tablero tiene unas dimensiones de (5 x 5), puedes jugar contra la máquina o con otro amigo, cada jugador tiene dos figuras las cuales ubicara en su tablero (submarino  y porta-aviones ).
 
 Reglas basicas del juego 
 - Se puede ubicar las dos naves en cualquier parte del tablero siempre y cuando no se salga de las dimensiones.
